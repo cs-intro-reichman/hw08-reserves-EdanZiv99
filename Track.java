@@ -1,9 +1,17 @@
 /** Represents a music track. A track has a title (String), an artist (String), 
  *  and a duration (int), in seconds. */
 class Track {
+   
+    public static void main (String args[]) {
+        System.out.println(formattedDuration(135));
+        Track imagine = new Track("imagine", "John Lenon", 187);
+        System.out.println(imagine.toString());
+    }
+   
     private String title;
     private String artist;
     private int duration;
+    public String getTitle;
 
     /** Constructs a track from the given values. */
     public Track(String title, String artist, int duration) {
@@ -15,9 +23,7 @@ class Track {
     /** Returns this track's data as "artist, title, minutes:seconds".
      *  For example, "John Lennon, Imagine, 3:07" */
     public String toString() {
-        //// Replace the following statement with code that returns
-        //// the data of this track according to the method's documentation.
-        return artist + ", " + title + ", " + duration;
+        return artist + ", " + title + ", " + formattedDuration(duration);
     }
 
     /** Returns this track's title. */
@@ -41,8 +47,16 @@ class Track {
 
     // Returns a string that represents the totalSeconds as "minutes:seconds",
     // Where seconds is always two digits. For example, "3:17" or "12:05".
-    private String formattedDuration(int totalSeconds) {
-        //// replace the following statement with your code
-        return "";
+    private static String formattedDuration(int totalSeconds) {
+        int minutes = totalSeconds / 60; 
+        int seconds = totalSeconds % 60;
+
+        if (seconds < 10) {
+            String strSeconds = "0" + seconds;
+            return minutes + ":" + strSeconds;
+        }
+
+        return minutes + ":" + seconds;
     }
+
 }
