@@ -50,8 +50,9 @@ class PlayList {
         StringBuilder tracksArray = new StringBuilder();
 
             for (int i = 0; i < this.size; i++) {
+                tracksArray.append("\n");
                 tracksArray.append(this.tracks[i].toString());
-                tracksArray.append("/n");
+                tracksArray.append("\n");
             }
         return "" + tracksArray.toString();
     }
@@ -68,7 +69,7 @@ class PlayList {
     public int totalDuration() {
         int total = 0; 
         for (int i = 0; i < this.size; i++) {
-            total += this.tracks[i].getDuration();
+            total = total + this.tracks[i].getDuration();
         }
         return total;
     }
@@ -94,7 +95,7 @@ class PlayList {
         if (i < 0 || i >= this.size || !(this.size < this.maxSize)) {
             return false;
         }
-        for (int j = this.size; j > i; j--) {
+        for (int j = this.size - 1; j >= i; j--) {
             this.tracks[j+1] = this.tracks[j]; 
         }
         this.tracks[i] = track; 
@@ -142,7 +143,7 @@ class PlayList {
      *  If the total size of both lists is too large, does nothing. */
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
-        if ((this.size + other.size) < this.maxSize) { 
+        if ((this.size + other.size) <= this.maxSize) { 
             for (int i = 0; i < other.size; i++) {
                 add(other.getTrack(i));
                 this.size++; 
