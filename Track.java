@@ -23,26 +23,26 @@ class Track {
     /** Returns this track's data as "artist, title, minutes:seconds".
      *  For example, "John Lennon, Imagine, 3:07" */
     public String toString() {
-        return artist + ", " + title + ", " + formattedDuration(duration);
+        return this.artist + ", " + this.title + ", " + formattedDuration(this.duration);
     }
 
     /** Returns this track's title. */
     public String getTitle() {
-        return title;
+        return this.title;
     }
     /** Returns this track's artist. */
     public String getArtist() {
-        return artist;
+        return this.artist;
     }
     /** Returns this track's duration. */
     public int getDuration() {
-        return duration;
+        return this.duration;
     }
 
     /** If this track's duration is shorter than the other track's duration
      *  returns true; otherwise returns false. */
     public boolean isShorterThan(Track other) {
-        return duration < other.duration;
+        return this.duration < other.duration;
     }
 
     // Returns a string that represents the totalSeconds as "minutes:seconds",
