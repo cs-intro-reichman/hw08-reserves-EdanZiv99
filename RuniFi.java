@@ -66,6 +66,8 @@ class RuniFi {
         // Sorts the list 
         myList.sortedInPlace();
         display("My list after sorting by increasing duration", myList);
+
+        System.out.println("\nTotal time duration of my new list (in seconds):" + myList.totalDuration());
     }
 
     private static void display(String str, PlayList list) {
