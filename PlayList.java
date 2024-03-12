@@ -108,7 +108,7 @@ class PlayList {
      *  If the list is empty, or the given index is negative or too big for this list, 
      *  does nothing and returns -1. */
     public void remove(int i) {
-        if (i < 0 || i >= this.size || this.size >= this.maxSize) {
+        if (i < 0 || i >= this.size || this.size == 0) {
             System.out.println("-1");
         } else {
             for (int j = i; j < this.size; j++) {
@@ -128,7 +128,6 @@ class PlayList {
        
         if (indexToRemove >= 0) {
             remove(indexToRemove);
-            this.size--;
         }
     }
 
@@ -146,7 +145,6 @@ class PlayList {
         if ((this.size + other.size) <= this.maxSize) { 
             for (int i = 0; i < other.size; i++) {
                 add(other.getTrack(i));
-                this.size++; 
             }
         }
     }
@@ -190,8 +188,7 @@ class PlayList {
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
     public void sortedInPlace() {
-        // Uses the selection sort algorithm,  
-        // calling the minIndex method in each iteration.
+
         Track temp;
        
         for (int i = 0; i < this.size; i++) {
