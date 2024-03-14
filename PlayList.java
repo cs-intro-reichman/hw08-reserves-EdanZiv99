@@ -199,7 +199,7 @@ class PlayList {
             int minIndex = minIndex(i);
             temp = this.tracks[i];
             this.tracks[i] = this.tracks[minIndex]; 
-            this.tracks[minIndex] = temp; 
+            this.tracks[minIndex] = temp;   
         }
     }
 }
