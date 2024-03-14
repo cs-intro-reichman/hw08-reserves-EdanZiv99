@@ -68,6 +68,8 @@ class RuniFi {
         display("My list after sorting by increasing duration", myList);
 
         System.out.println("\nTotal time duration of my new list (in seconds):" + myList.totalDuration());
+
+        System.out.println("My list size after merging with new list " + myList.getSize());
     }
 
     private static void display(String str, PlayList list) {
