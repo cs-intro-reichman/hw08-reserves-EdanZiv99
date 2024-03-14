@@ -144,7 +144,7 @@ class PlayList {
      public void add(PlayList other) {
         if ((this.size + other.size) <= this.maxSize) { 
             for (int i = 0; i < other.size; i++) {
-                add(other.getTrack(i));
+                add(other.tracks[i]);
             }
         }  
     }
