@@ -134,7 +134,7 @@ class PlayList {
     /** Removes the first track from this list. If the list is empty, does nothing. */
     public void removeFirst() {
         if (this.size > 0) {
-            remove(0);
+            remove(0);  
         }
     }
     
