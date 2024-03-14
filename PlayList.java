@@ -61,7 +61,7 @@ class PlayList {
      public void removeLast() {
         if (this.size > 0) {
             this.tracks[size - 1] = null; 
-            this.size--;
+            size--;
         }
     }
     
@@ -78,7 +78,7 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) { 
         for (int i = 0; i < this.size; i++) {
-            if (title.equals(this.tracks[i].getTitle())) {
+            if (title.equalsIgnoreCase(this.tracks[i].getTitle())) {
                 return i; 
             }
         }
@@ -160,21 +160,19 @@ class PlayList {
      *  If start is negative or greater than size - 1, returns -1.
      */
     private int minIndex(int start) {
-        int minDuration = this.tracks[start].getDuration();
-        int indexOfMinDuration = start;
-       
         if (start < 0 || start > this.size - 1) { 
           return -1;   
         }
-
+        Track min = tracks[start]; 
+        int minIndex = start; 
         for (int i = start + 1; i < this.size; i++) {
-           if (this.tracks[i].getDuration() < minDuration) {
-                indexOfMinDuration = i; 
-                minDuration = this.tracks[i].getDuration(); 
+           if (tracks[i].isShorterThan(min)) {
+                min = tracks[i];
+                minIndex = i;  
            }
         }
 
-        return indexOfMinDuration;
+        return minIndex;
     }
 
     /** Returns the title of the shortest track in this list. 
@@ -195,7 +193,7 @@ class PlayList {
 
         Track temp;
        
-        for (int i = 0; i < this.size; i++) {
+        for (int i = 0; i < this.size -1; i++) {
             int minIndex = minIndex(i);
             temp = this.tracks[i];
             this.tracks[i] = this.tracks[minIndex]; 
