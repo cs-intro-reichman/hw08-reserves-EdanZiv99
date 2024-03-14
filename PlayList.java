@@ -142,10 +142,14 @@ class PlayList {
      *  If the total size of both lists is too large, does nothing. */
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
-        if ((this.size + other.size) <= this.maxSize) { 
-            for (int i = 0; i < other.size; i++) {
-                this.add(other.tracks[i]);
+        int newSize = this.size + other.size;
+        if (newSize <= this.maxSize) { 
+            int j = 0; 
+            for (int i = size; i < newSize; i++) {
+                tracks[i] = other.getTrack(j);
+                j++;  
             }
+        this.size = newSize; 
         }      
     }
 
